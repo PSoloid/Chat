@@ -19,11 +19,16 @@ public class Client {
 
     public void start() throws IOException {
 
-        send("Connected");
+
 
         Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Input your name");
+        String line = scanner.nextLine();
+        send("intro " + line);
+
         while (true) {
-            String line = scanner.nextLine();
+            line = scanner.nextLine();
             send(line);
         }
     }

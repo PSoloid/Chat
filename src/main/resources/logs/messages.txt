@@ -21,3 +21,16 @@
 /10.0.3.178: 4353544444
 /10.0.3.178: Connected
 /10.0.3.178: Connected
+/10.0.3.178: Connected
+/10.0.3.178: Connected
+/10.0.3.178: Vasyaconnected
+Vasya: intro Vasya
+Vasya: Connected
+/10.0.3.178: tretretr
+/10.0.3.178: dfgfdgdfg
+/10.0.3.178: gfdgfdg
+Petia: Connected
+Petya: Connected
+/10.0.3.178: gggggg
+/10.0.3.178: rrrrrr
+Ura: Connected

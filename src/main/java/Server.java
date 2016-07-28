@@ -39,6 +39,7 @@ public class Server {
             if (line.contains("intro ")) {
                 String name = line.replace("intro ", "");
                 ipToName.put(address, name);
+                line = "Connected";
             } else {
                 ipToName.put(address, null);
             }
