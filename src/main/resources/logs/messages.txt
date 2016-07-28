@@ -34,3 +34,12 @@ Petya: Connected
 /10.0.3.178: gggggg
 /10.0.3.178: rrrrrr
 Ura: Connected
+Pavel: Connected
+/10.0.3.178: fdgdf
+Pol: Connected
+Paul: Connected
+/10.0.3.178: Hello
+Jhon: Connected
+Jhon: fhfghf
+Jhon: ghfghf
+Jhon: hhhhhhhhh

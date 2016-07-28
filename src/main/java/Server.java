@@ -40,9 +40,10 @@ public class Server {
                 String name = line.replace("intro ", "");
                 ipToName.put(address, name);
                 line = "Connected";
-            } else {
-                ipToName.put(address, null);
             }
+//              else {
+//                ipToName.put(address, null);
+//            }
 
             System.out.println(getName(address) + ": " + line);
 
