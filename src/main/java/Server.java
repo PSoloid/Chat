@@ -30,9 +30,7 @@ public class Server {
 
             String line = reader.readLine();
 
-            if (line.contains("Connected")) {
-                sendLast10(address);
-            }
+
 
 
             //intro Name
@@ -44,6 +42,10 @@ public class Server {
 //              else {
 //                ipToName.put(address, null);
 //            }
+
+            if (line.contains("Connected")) {
+                sendLast10(address);
+            }
 
             System.out.println(getName(address) + ": " + line);
 
