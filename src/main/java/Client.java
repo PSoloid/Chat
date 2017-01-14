@@ -29,22 +29,21 @@ public class Client {
         String name = scanner.nextLine();
         send("intro " + name, name);
 
+        String state = "";
 
-
-
-        while (true) {
+        while (true)  {
             String text = scanner.nextLine();
 
             if (text.contains("state: ")) {
-                String state = text.replace("state: ", "");
+                state = text.replace("state: ", "");
             }
 
-            createMessage(text);
+            createMessage(text, state);
 
         }
     }
 
-    public void createMessage (String text){
+    public void createMessage (String text, String state){
         Scanner scanner = new Scanner(System.in);
 
 //        System.out.println("Input your name");
@@ -58,7 +57,7 @@ public class Client {
 //        String curStringDate = new SimpleDateFormat("dd.MM.yyyy").format(curTime);
 
 //        if (text.contains("state: ")) {
-//            St ring state = text.replace("state: ", "");
+//            String state = text.replace("state: ", "");
 //        }
 
 
@@ -74,7 +73,7 @@ public class Client {
 
 
     public void send(String text, String name) throws IOException {
-        Socket socket = new Socket("10.0.3.178", 3111);
+        Socket socket = new Socket("192.168.1.154", 3111);
         PrintWriter writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
 
 
