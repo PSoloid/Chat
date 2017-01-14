@@ -27,7 +27,7 @@ public class Client {
 
         System.out.println("Input your name");
         String name = scanner.nextLine();
-        send("intro " + name, name);
+       // send("i ntro " + name, name);
 
         String state = "";
 
@@ -38,13 +38,13 @@ public class Client {
                 state = text.replace("state: ", "");
             }
 
-            createMessage(text, state);
+            createMessage(name, state, text);
 
         }
     }
 
-    public void createMessage (String text, String state){
-        Scanner scanner = new Scanner(System.in);
+    public void createMessage (String name, String state, String text){
+    //    Scanner scanner = new Scanner(System.in);
 
 //        System.out.println("Input your name");
 //        String name = scanner.nextLine();
@@ -72,7 +72,7 @@ public class Client {
     }
 
 
-    public void send(String text, String name) throws IOException {
+    public void send(Message mess) throws IOException {
         Socket socket = new Socket("192.168.1.154", 3111);
         PrintWriter writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
 
