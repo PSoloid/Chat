@@ -63,6 +63,12 @@ public class Client {
 
         Message mess = new Message(name, address, curDate, state, text);
 
+        try {
+            send(mess);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
         try {
             socket.close();
@@ -74,15 +80,15 @@ public class Client {
 
     public void send(Message mess) throws IOException {
         Socket socket = new Socket("192.168.1.154", 3111);
-        PrintWriter writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+      //  PrintWriter writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
 
+        ObjectOutputStream serializer = new ObjectOutputStream(socket.getOutputStream());
 
+        serializer.writeObject(mess);
 
-        writer.println(mess);
+        serializer.flush();
 
-        writer.flush();
-
-        writer.close();
+        serializer.close();
         try {
             socket.close();
         } catch (IOException e) {
