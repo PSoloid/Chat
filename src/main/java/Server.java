@@ -26,33 +26,48 @@ public class Server {
             Socket socket = serverSocket.accept();
             InetAddress address = socket.getInetAddress();
 
-            BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+//            BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-            String line = reader.readLine();
+//            String line = reader.readLine();
 
+            ObjectInputStream deserializer = new ObjectInputStream(socket.getInputStream());
 
-
-
-            //intro Name
-            if (line.contains("intro ")) {
-                String name = line.replace("intro ", "");
-                ipToName.put(address, name);
-                line = "Connected";
+            Message mess = null;
+            try {
+                mess = (Message) deserializer.readObject();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
             }
-//              else {
-//                ipToName.put(address, null);
-//            }
 
-            if (line.contains("Connected")) {
+            if (mess.getTextMessage().equals("Connected")) {
                 sendLast10(address);
             }
 
-            System.out.println(getName(address) + ": " + line);
+            System.out.println(mess.getName() + " (" + mess.getState() + ") : " + mess.getTextMessage());
+            System.out.println(mess);
 
-            sendToLog(getName(address) + ": " + line);
-            sendToClients(getName(address) + ": " + line);
 
-            reader.close();
+            //intro Name
+//            if (line.contains("intro ")) {
+//                String name = line.replace("intro ", "");
+//                ipToName.put(address, name);
+//                line = "Connected";
+//            }
+
+
+
+// //             else {
+// //              ipToName.put(address, null);
+// //           }
+
+
+
+//            System.out.println(getName(address) + ": " + line);
+//
+            sendToLog(mess.getName() + " (" + mess.getState() + ") : " + mess.getTextMessage());
+            sendToClients(mess.getName() + " (" + mess.getState() + ") : " + mess.getTextMessage());
+//
+//            reader.close();
             socket.close();
         }
     }

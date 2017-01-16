@@ -2,6 +2,7 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
@@ -27,9 +28,9 @@ public class Client {
 
         System.out.println("Input your name");
         String name = scanner.nextLine();
-       // send("i ntro " + name, name);
 
-        String state = "";
+        String state = "online";
+        createMessage(name, state, "Connected");
 
         while (true)  {
             String text = scanner.nextLine();
@@ -49,8 +50,13 @@ public class Client {
 //        System.out.println("Input your name");
 //        String name = scanner.nextLine();
 
-        Socket socket = new Socket();
-        InetAddress address = socket.getInetAddress();
+      //  Socket socket = new Socket();
+        InetAddress address = null;//socket.getInetAddress();
+        try {
+            address = InetAddress.getLocalHost();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
 
         long curTime = System.currentTimeMillis();
         Date curDate = new Date(curTime);
@@ -70,11 +76,11 @@ public class Client {
         }
 
 
-        try {
-            socket.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            socket.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
 
