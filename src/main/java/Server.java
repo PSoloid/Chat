@@ -43,6 +43,8 @@ public class Server {
                 sendLast10(address);
             }
 
+                ipToName.put(address, mess.getName());
+
             System.out.println(mess.getName() + " (" + mess.getState() + ") : " + mess.getTextMessage());
             System.out.println(mess);
 
